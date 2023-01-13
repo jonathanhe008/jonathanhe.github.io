@@ -5,8 +5,15 @@ body {
   font-size:18px;
   color:#444;
   padding:0 10px;
-}
 
-h1,h2,h3{
-  line-height:1.2
+}
+#social a {
+height: 32px;
+width: 32px;
+margin: 0 1rem;
+}
+#social a:hover {
+height: 36px;
+width: 36px;
+transition: ease-in-out 0.2s;
 }
