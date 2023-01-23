@@ -1,19 +1,92 @@
-body {
-  margin:40px auto;
-  max-width:650px;
-  line-height:1.6;
-  font-size:18px;
-  color:#444;
-  padding:0 10px;
+/* General Font */
+body { 
+    background-color: beige;
+}
+	
+p, li, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Quicksand', sans-serif;
+}
 
+a, a:hover {
+    color: orange;
 }
-#social a {
-height: 32px;
-width: 32px;
-margin: 0 1rem;
+
+/* Content Box */
+.icon-container {
+    width: fit-content; 
+    border-radius: 5px; 
+    padding: 15px; 
+    margin: 0 auto;
 }
-#social a:hover {
-height: 36px;
-width: 36px;
-transition: ease-in-out 0.2s;
+
+.feature-container {
+    width: 50vw;
+    min-width: 300px; 
+    padding: 15px; 
+    margin: 0 auto;
+}
+
+.feature-container-logo {
+    width: 80%; 
+    max-width: 100px; 
+    height:auto; 
+    vertical-align: bottom;
+}
+
+.feature-container-img {
+    width: 80%; 
+    max-width: 250px; 
+    height:auto; 
+    vertical-align: bottom;
+}
+
+@media (min-width: 768px) {
+    .feature-container-logo {
+        float: right
+    } 
+    .feature-container-img {
+        float: right
+    }
+}
+
+.vertical-aligner {
+    display: inline-block; 
+    height: 40%; 
+    vertical-align: middle;
+}
+
+/* Other */
+.btn {
+    background-color: white; 
+    outline: solid; 
+    margin: 5px;
+}
+
+.icon {
+    border-radius: 10px; 
+    width: 45px; 
+    height: auto; 
+    margin: 10px;
+}
+
+.fading-element {
+    opacity: 0;
+}
+
+/* Remove Scrollbar */
+html {
+    scroll-behavior: smooth;
+    overflow: scroll; 
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 0px; 
+    background: transparent;
+}
+
+.icon:hover {
+    height: auto;
+    width: 50px;
+    transition: ease-in-out 0.2s;
 }
