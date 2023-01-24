@@ -43,7 +43,7 @@
 <!-- Start featured content -->
 
 <!-- Content's "fade in" reaction is better with container. -->
-<div class="container feature-container fading-element" style="margin-top: 15vh">
+<div class="container feature-container fading-element" style="margin-top: 12vh" id="first">
 		<div class="row">
 			<div class="col-sm-4">
 				<div style="height: 30px;"></div>
@@ -167,7 +167,13 @@
      else {
          $('.mouse_scroll').show();
      }
-});
+	});
+
+	$(".mouse_scroll").click(function() {
+    $('html,body').animate({
+        scrollTop: $("#first").offset().top},
+        'slow');
+	});
 </script>
 
 </body>
