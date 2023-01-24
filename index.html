@@ -170,10 +170,14 @@
 	});
 
 	$(".mouse_scroll").click(function() {
-    $('html,body').animate({
-        scrollTop: $("#first").offset().top},
-        'slow');
+    var element = document.getElementById("first");
+    var offset = element.offsetTop;
+    window.scrollTo({
+        top: offset,
+        behavior: "smooth"
+    });
 	});
+
 </script>
 
 </body>
