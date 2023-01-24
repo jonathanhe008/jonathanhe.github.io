@@ -21,24 +21,23 @@
 <!-- Intro -->
 <div style="height: 80vh; text-align: center;">
 	 <span class="vertical-aligner"></span>
-	<div class="container">
+    <img src="id.png" style="height: 200px; width: auto;" class="img-circle"></a>
+	<div class="container"> 
 		<!-- Signature -->
 		<img src="signature.gif" style="height: 200px; width: auto;"/></a>
 		<!-- Name -->
 		<h1 style="font-family: 'Chalkduster'">Jonathan He</h1>
 	</div>
-
-	<!-- Links -->
-	<div style="margin-top: 15px;">
-		<!-- Box fits content, centered with "margin: 0 auto;" -->
-		<div class="row icon-container">
-			<div class="col-sm-12" style="padding: 3px; margin: 0px;">
-            <a href="https://www.linkedin.com/in/jonathan-he2000"><img class="icon" src="linkedin.svg"></a>
-            <a href="jonathan_he.pdf"><img class="icon" src="resume.png"></a>
-            <a href="https://www.github.com/jonathanhe008"><img class="icon" src="github.svg"></a>
-			</div>
-		</div>
-	</div>
+   <div class="mouse_scroll">
+      <div class="mouse">
+         <div class="wheel"></div>
+      </div>
+      <div>
+         <span class="m_scroll_arrows unu"></span>
+         <span class="m_scroll_arrows doi"></span>
+         <span class="m_scroll_arrows trei"></span>
+      </div>
+   </div>
 </div>
 
 <!-- Start featured content -->
@@ -127,6 +126,18 @@
 <!-- Extra space at bottom -->
 <div style="height: 20vh;"/>
 
+<!-- Links -->
+<div style="margin-top: 15px;">
+   <!-- Box fits content, centered with "margin: 0 auto;" -->
+   <div class="row icon-container">
+      <div class="col-sm-12" style="padding: 3px; margin: 0px;">
+         <a href="https://www.linkedin.com/in/jonathan-he2000"><img class="icon" src="linkedin.svg"></a>
+         <a href="jonathan_he.pdf"><img class="icon" src="resume.png"></a>
+         <a href="https://www.github.com/jonathanhe008"><img class="icon" src="github.svg"></a>
+      </div>
+   </div>
+</div>
+
 <script>
 	$(window).on("load",function() {
 		$(window).scroll(function() {
@@ -148,6 +159,15 @@
 			});
 		}).scroll();
 	});
+
+   $(window).bind('scroll', function() {
+     if ($(window).scrollTop() > 200) {
+         $('.mouse_scroll').hide();
+     }
+     else {
+         $('.mouse_scroll').show();
+     }
+});
 </script>
 
 </body>
