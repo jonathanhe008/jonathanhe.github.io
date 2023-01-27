@@ -264,7 +264,7 @@ html {
 
 /* Navigation Bar */
 div.header {
-  display:table; width:100%; table-layout: fixed; background-color: #fafafa;
+  display:table; width:100%; table-layout: fixed; background-color: lightgray;
 }
 
 div.header span {
