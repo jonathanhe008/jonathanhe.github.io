@@ -1,5 +1,5 @@
-import { fetchStats } from "./stats";
-import { fetchPlayer } from './player';
+import { fetchStats } from "./stats.js";
+import { fetchPlayer } from './player.js';
 
 (async function() {
   const player = await fetchPlayer();
