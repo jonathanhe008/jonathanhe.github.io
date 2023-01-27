@@ -1,4 +1,3 @@
-import Chart from 'chart.js/auto'
 import { fetchStats } from "./stats";
 import { fetchPlayer } from './player';
 
