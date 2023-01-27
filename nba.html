@@ -27,12 +27,38 @@
 <div style="margin-bottom: 10vh;">
 	<div class="container" style="padding-top: 15vh; margin-bottom: 30px; text-align: center;">
 		<h1><b>Is he Himothy?</b></h1>
-		<p>January 2023 - current</p>
+		<p>Visionaries: JH & KS</p>
 	</div>
 </div>
 
+<div style="margin-bottom: 30vh;">
+	<div class="container">
+		<form id="content">
+			<input type="text" name="input" class="input" id="search-input">
+			<button type="reset" class="search" id="search-btn"></button>
+		</form>
+	</div>
+</div>
+
+<div class="container" id="nba_container">
+	<div style="width: 800px;">
+		<canvas id="nba"></canvas>
+	</div>
+</div>
+
+<script type="module" src="nba.js" async></script>
+
 
 <br/><br/>
+<script>
+	const input = document.getElementById("search-input");
+	const searchBtn = document.getElementById("search-btn");
 
+	searchBtn.addEventListener("click", function() {
+		searchBtn.classList.toggle("close");
+		input.classList.toggle("square");
+	});
+
+</script>
 </body>
 </html>
