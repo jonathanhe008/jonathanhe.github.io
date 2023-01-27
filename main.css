@@ -261,3 +261,22 @@ html {
   50%  { opacity: .5; }
   100% { opacity: 1; }
 }
+
+div.header {
+  display:table; width:100%; table-layout: fixed; background-color: #fafafa;
+}
+div.header span {
+  display:table-cell; border: none; padding: 16px 12px 12px 12px;
+}
+.highlight:hover {
+  background-color: #f0f0f0;
+}
+.highlight a {
+  text-decoration: none;
+}
+.highlight {
+  text-align:center;
+}
+nav {
+  background-color: white; position: fixed; width: 100%; z-index: 999;
+}
