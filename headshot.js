@@ -1,5 +1,5 @@
+import players from './players.json';
 export async function fetchHeadshot(name) {
-    const players = require('../players.json');
     for (let player of players['league']['standard']) {
         if (`${player['firstName']} ${player['lastName']}` == name) {
             const img = document.querySelector("#headshot");
