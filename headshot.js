@@ -1,4 +1,4 @@
-import players from './players.json';
+import players from './players.json' assert { type: "json" };;
 export async function fetchHeadshot(name) {
     for (let player of players['league']['standard']) {
         if (`${player['firstName']} ${player['lastName']}` == name) {
