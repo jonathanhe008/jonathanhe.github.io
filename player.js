@@ -20,6 +20,12 @@ export async function fetchPlayer() {
             alert("Couldn't find player!!");
         }
         console.log(data.data);
+        for (let d of data['data']) {
+            console.log(d);
+            if (d['height_inches'] != null) {
+                return d;
+            } 
+        }
         return data.data[0];
     }
 }
