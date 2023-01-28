@@ -1,11 +1,12 @@
 import { fetchStats } from "./stats.js";
 import { fetchPlayer } from './player.js';
+import { fetchHeadshot } from './headshot.js';
 
 (async function() {
   const player = await fetchPlayer();
-  
-  const data = await fetchStats(player);
   var name = player ? `${player['first_name']} ${player['last_name']}` : "LeBron James";
+  const id = await fetchHeadshot(name);
+  const data = await fetchStats(player);
 
   new Chart(
     document.getElementById('nba'),
