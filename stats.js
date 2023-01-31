@@ -1,12 +1,13 @@
-const stat_literal = {
-    "Points": 'pts',
-    "Assists": 'ast',
-    "Rebounds": 'reb',
-    "Blocks": 'blk',
-    "Steals": 'stl',
-    "Turnovers": 'turnover',
-};
 export async function fetchStats(player, stat) {
+    const stat_literal = {
+        "Points": 'pts',
+        "Assists": 'ast',
+        "Rebounds": 'reb',
+        "Blocks": 'blk',
+        "Steals": 'stl',
+        "Turnovers": 'turnover',
+    };
+    
     var player_id = player ? player['id'] : 237;
     var url = new URL("https://www.balldontlie.io/api/v1/stats");
     var params = {
