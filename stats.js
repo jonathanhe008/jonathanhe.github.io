@@ -33,7 +33,7 @@ export async function fetchStats(player, stat) {
         if (d.min === "00" || d.min === "" || d.min === "0" || d.min === "0:00") {
             continue;
         }
-        var stat = d[stat_name];
+        let stat = d[stat_name];
         if (stat_map[stat]) {
             stat_map[stat]++;
         } else {
