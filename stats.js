@@ -1,11 +1,11 @@
 export async function fetchStats(player, stat) {
     var stat_literal = {
-        "Points": 'pts',
-        "Assists": 'ast',
-        "Rebounds": 'reb',
-        "Blocks": 'blk',
-        "Steals": 'stl',
-        "Turnovers": 'turnover',
+        "Points": "pts",
+        "Assists": "ast",
+        "Rebounds": "reb",
+        "Blocks": "blk",
+        "Steals": "stl",
+        "Turnovers": "turnover",
     };
 
     var player_id = player ? player['id'] : 237;
