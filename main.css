@@ -304,7 +304,7 @@ nav {
   height: 50px;
   width: 300px;
   margin-left: 170px;
-  top: 50%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
 }

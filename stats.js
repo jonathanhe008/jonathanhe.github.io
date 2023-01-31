@@ -1,4 +1,12 @@
-export async function fetchStats(player) {
+const stat_literal = {
+    "Points": 'pts',
+    "Assists": 'ast',
+    "Rebounds": 'reb',
+    "Blocks": 'blk',
+    "Steals": 'stl',
+    "Turnovers": 'turnover',
+};
+export async function fetchStats(player, stat) {
     var player_id = player ? player['id'] : 237;
     var url = new URL("https://www.balldontlie.io/api/v1/stats");
     var params = {
@@ -17,22 +25,25 @@ export async function fetchStats(player) {
     // let sorted_data = data.data.sort((a, b) => {
     //     return new Date(a.game.date) - new Date(b.game.date);
     // });
-    let point_map = {};
+    console.log(stat_literal[stat]);
+    const stat_name = stat_literal[stat];
+    let stat_map = {};
     for (let d of data.data) {
         if (d.min === "00" || d.min === "" || d.min === "0" || d.min === "0:00") {
             continue;
         }
-        if (point_map[d.pts]) {
-            point_map[d.pts]++;
+        var stat = d[stat_name];
+        if (stat_map[stat]) {
+            stat_map[stat]++;
         } else {
-            point_map[d.pts] = 1;
+            stat_map[stat] = 1;
         }
     }
 
     let result = [];
-    for (const [key, value] of Object.entries(point_map)) {
+    for (const [key, value] of Object.entries(stat_map)) {
         result.push({
-            point: key,
+            stat: key,
             count: value
         })
     }
