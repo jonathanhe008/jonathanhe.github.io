@@ -20,6 +20,7 @@ var team_map = null;
   team_map = obj;
 
   document.body.style.backgroundColor = `rgba(${team_map[player.team.id].secondary_color}, 0.3)`;
+  document.body.style.visibility = "visible";
   document.querySelector(".btn").style.backgroundColor = `rgba(${team_map[player.team.id].secondary_color}, 0.1)`;
   chart = new Chart(
     document.getElementById('nba'),
