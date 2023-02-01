@@ -23,15 +23,39 @@ export async function fetchStats(player, stat) {
         alert("Player didn't play this season!! Please narrow down search");
     }
     console.log(data.data);
-    // let sorted_data = data.data.sort((a, b) => {
-    //     return new Date(a.game.date) - new Date(b.game.date);
-    // });
+
+    var team_map = await fetchTeams();
+    var sorted_data = data.data.sort((a, b) => {
+        return new Date(b.game.date) - new Date(a.game.date);
+    });
+
+    var table = "<table class='table'>" +
+            "<thead>" +
+            "<tr>" +
+            "<th>Date</th>" +
+            "<th>Game</th>" +
+            "<th>Min</th>" +
+            "<th>Pts</th>" +
+            "<th>Ast</th>" +
+            "<th>Reb</th>" +
+            "<th>Stl</th>" +
+            "<th>Blk</th>" +
+            "<th>Tov</th>" +
+            "</tr>" +
+            "</thead>" +
+            "<tbody>";
+    
     console.log(stat_literal[stat]);
     const stat_name = stat_literal[stat];
-    let stat_map = {};
-    for (let d of data.data) {
+    var stat_map = {};
+    for (let d of sorted_data) {
         if (d.min === "00" || d.min === "" || d.min === "0" || d.min === "0:00") {
-            continue;
+            table += "<tr>" +
+             "<td>" + d.game.date.substring(0,10) + "</td>" +
+             "<td>" + team_map[d.game.visitor_team_id] + " @ " + team_map[d.game.home_team_id] + "</td>" +
+             "<td colspan=\"7\" class=\"text-center\">" + "DNP"+ "</td>" +
+             "</tr>";
+             continue;
         }
         let stat = d[stat_name];
         if (stat_map[stat]) {
@@ -39,7 +63,24 @@ export async function fetchStats(player, stat) {
         } else {
             stat_map[stat] = 1;
         }
+
+        table += "<tr>" +
+             "<td>" + d.game.date.substring(0,10) + "</td>" +
+             "<td>" + team_map[d.game.visitor_team_id] + " @ " + team_map[d.game.home_team_id] + "</td>" +
+             "<td>" + d.min + "</td>" +
+             "<td>" + d.pts + "</td>" +
+             "<td>" + d.ast + "</td>" +
+             "<td>" + d.reb + "</td>" +
+             "<td>" + d.stl + "</td>" +
+             "<td>" + d.blk + "</td>" +
+             "<td>" + d.turnover + "</td>" +
+             "</tr>";
     }
+
+    table += "</tbody>" +
+         "</table>";
+
+    document.getElementById("table_container").innerHTML = table;
 
     let result = [];
     for (const [key, value] of Object.entries(stat_map)) {
@@ -51,4 +92,17 @@ export async function fetchStats(player, stat) {
 
     console.log(result);
     return result;
+}
+
+export async function fetchTeams() {
+    var url = new URL("https://www.balldontlie.io/api/v1/teams");
+    let response = await fetch(url, { method: "GET" });
+    let data = await response.json();
+
+    let team_map = {};
+    for (let d of data.data) {
+        team_map[d.id] = d.full_name
+    }
+    return team_map;
+    
 }
