@@ -20,7 +20,18 @@ export async function fetchStats(player, stat, team_map) {
     let data = await response.json();
 
     if (data.data.length == 0) {
-        alert("Player didn't play this season!! Please narrow down search");
+        alert("Please narrow down search. Defaulting to LeGoat James :)");
+        const img = document.querySelector("#headshot");
+        img.src = `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/2544.png`;
+        var url = new URL("https://www.balldontlie.io/api/v1/stats");
+        var params = {
+            'seasons[]': ['2022'], 
+            'player_ids[]': [237],
+            'per_page': 100
+        };
+        url.search = new URLSearchParams(params).toString();
+        let response = await fetch(url, { method: "GET" });
+        data = await response.json();
     }
     console.log(data.data);
 
