@@ -1,17 +1,22 @@
 import { fetchStats } from "./stats.js";
 import { fetchPlayer } from './player.js';
 import { fetchHeadshot } from './headshot.js';
+import { fetchTeams } from "./teams.js";
 
 var player = null;
 var chart = null;
-
+var team_map = null;
 (async function generateChart() {
   player = await fetchPlayer();
   var name = player ? `${player['first_name']} ${player['last_name']}` : "LeBron James";
   const id = await fetchHeadshot(name);
   var stat = $('#stat_select').val();
-  const data = await fetchStats(player, stat);
+  console.log(player.team.id);
+  team_map = await fetchTeams();
+  const data = await fetchStats(player, stat, team_map);
 
+  document.body.style.backgroundColor = `rgba(${team_map[player.team.id].secondary_color}, 0.3)`;
+  document.querySelector(".btn").style.backgroundColor = `rgba(${team_map[player.team.id].secondary_color}, 0.1)`;
   chart = new Chart(
     document.getElementById('nba'),
     {
@@ -21,7 +26,8 @@ var chart = null;
         datasets: [
           {
             label: 'Frequency',
-            data: data.map(row => row.count)
+            data: data.map(row => row.count),
+            backgroundColor: `rgb(${team_map[player.team.id].primary_color})`,
           }
         ]
       },
@@ -44,7 +50,7 @@ $('#stat_select').on('changed.bs.select', async function (e, clickedIndex, isSel
   var stat = $('#stat_select').val();
   console.log(stat);
   var name = player ? `${player['first_name']} ${player['last_name']}` : "LeBron James";
-  const data = await fetchStats(player, stat);
+  const data = await fetchStats(player, stat, team_map);
   console.log(data);
   chart.data.labels = data.map(row => row.stat);
   chart.data.datasets[0].data = data.map(row => row.count);

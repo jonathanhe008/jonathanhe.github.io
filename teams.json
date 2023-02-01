@@ -1,0 +1,182 @@
+{
+    "1": {
+        "name": "Atlanta Hawks",
+        "primary_color": "200, 16, 46",
+        "secondary_color": "253, 185, 39",
+        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_atlanta_hawks_secondary.png"
+    },
+    "2": {
+        "name": "Boston Celtics",
+        "primary_color": "0, 122, 51",
+        "secondary_color": "139, 111, 78",
+        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_boston_celtics_secondary.png"
+    },
+    "3":  {
+        "name": "Brooklyn Nets",
+        "primary_color": "0, 0, 0",
+        "secondary_color": "255, 255, 255",
+        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_brooklyn_nets_secondary.png"
+    },
+    "4":  {
+        "name": "Charlotte Hornets",
+        "primary_color": "29, 17, 96",
+        "secondary_color": "0, 120, 140",
+        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_charlotte_hornets_secondary.png"
+    },
+    "5":  {
+        "name": "Chicago Bulls",
+        "primary_color": "206, 17, 65",
+        "secondary_color": "6, 25, 34",
+        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_chicago_bulls_secondary.png"
+    },
+    "6":  {
+        "name": "Cleveland Cavaliers",
+        "primary_color": "134, 0, 56",
+        "secondary_color": "4, 30, 66",
+        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_cleveland_cavaliers_secondary.png"
+    },
+    "7":  {
+        "name": "Dallas Mavericks",
+        "primary_color": "0, 83, 188",
+        "secondary_color": "0, 43, 92",
+        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_dallas_mavericks_secondary.png"
+    },
+    "8":  {
+        "name": "Denver Nuggets",
+        "primary_color": "13, 34, 64",
+        "secondary_color": "255, 198, 39",
+        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_denver_nuggets_secondary.png"
+    },
+    "9":  {
+        "name": "Detroit Pistons",
+        "primary_color": "200, 16, 46",
+        "secondary_color": "29,66,138",
+        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_detroit_pistons_secondary.png"
+    },
+    "10":  {
+        "name": "Golden State Warriors",
+        "primary_color": "29, 66, 138",
+        "secondary_color": "255, 199, 44",
+        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_golden_state_warriors_secondary.png"
+    },
+    "11":  {
+        "name": "Houston Rockets",
+        "primary_color": "206,17,65",
+        "secondary_color": "196,206,211",
+        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_houston_rockets_secondary.png"
+    },
+    "12":  {
+        "name": "Indiana Pacers",
+        "primary_color": "0, 45, 98",
+        "secondary_color": "253, 187, 48",
+        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_indiana_pacers_secondary.png"
+    },
+    "13":  {
+        "name": "LA Clippers",
+        "primary_color": "200,16,46",
+        "secondary_color": "29,66,148",
+        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_los_angeles_clippers_secondary.png"
+    },
+    "14":  {
+        "name": "Los Angeles Lakers",
+        "primary_color": "85, 37, 130",
+        "secondary_color": "253, 185, 39",
+        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_los_angeles_lakers_secondary.png"
+    },
+    "15":  {
+        "name": "Memphis Grizzlies",
+        "primary_color": "93, 118, 169",
+        "secondary_color": "18, 23, 63",
+        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_memphis_grizzlies_secondary.png"
+    },
+    "16":  {
+        "name": "Miami Heat",
+        "primary_color": "152, 0, 46",
+        "secondary_color": "6, 25, 34",
+        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_miami_heat_secondary.png"
+    },
+    "17":  {
+        "name": "Milwaukee Bucks",
+        "primary_color": "0, 71, 27",
+        "secondary_color": "240, 235, 210",
+        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_milwaukee_bucks_secondary.png"
+    },
+    "18":  {
+        "name": "Minnesota Timberwolves",
+        "primary_color": "12, 35, 64",
+        "secondary_color": "35, 97, 146",
+        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_minnesota_timberwolves_secondary.png"
+    },
+    "19":  {
+        "name": "New Orleans Pelicans",
+        "primary_color": "0, 22, 65",
+        "secondary_color": "225, 58, 62",
+        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_new_orleans_pelicans_secondary.png"
+    },
+    "20":  {
+        "name": "New York Knicks",
+        "primary_color": "0, 107, 182",
+        "secondary_color": "245, 132, 38",
+        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_new_york_knicks_secondary.png"
+    },
+    "21":  {
+        "name": "Oklahoma City Thunder",
+        "primary_color": "0, 125, 195",
+        "secondary_color": "239, 59, 36",
+        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_oklahoma_city_thunder_secondary.png"
+    },
+    "22":  {
+        "name": "Orlando Magic",
+        "primary_color": "0, 125, 197",
+        "secondary_color": "196, 206, 211",
+        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_orlando_magic_secondary.png"
+    },
+    "23":  {
+        "name": "Philadelphia 76ers",
+        "primary_color": "0, 107, 182",
+        "secondary_color": "237, 23, 76",
+        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_philadelphia_76ers_secondary.png"
+    },
+    "24":  {
+        "name": "Phoenix Suns",
+        "primary_color": "29, 17, 96",
+        "secondary_color": "229, 95, 32",
+        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_phoenix_suns_secondary.png"
+    },
+    "25":  {
+        "name": "Portland Trail Blazers",
+        "primary_color": "224, 58, 62",
+        "secondary_color": "6, 25, 34",
+        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_portland_trail_blazers_secondary.png"
+    },
+    "26":  {
+        "name": "Sacramento Kings",
+        "primary_color": "91,43,130",
+        "secondary_color": "99,113,122",
+        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_sacramento_kings_secondary.png"
+    },
+    "27":  {
+        "name": "San Antonio Spurs",
+        "primary_color": "196, 206, 211",
+        "secondary_color": "6, 25, 34",
+        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_san_antonio_spurs_secondary.png"
+    },
+    "28":  {
+        "name": "Toronto Raptors",
+        "primary_color": "206, 17, 65",
+        "secondary_color": "6, 25, 34",
+        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_toronto_raptors_secondary.png"
+    },
+    "29":  {
+        "name": "Utah Jazz",
+        "primary_color": "0, 43, 92",
+        "secondary_color": "0, 71, 27",
+        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_utah_jazz_secondary.png"
+    },
+    "30":  {
+        "name": "Washington Wizards",
+        "primary_color": "0,43,92",
+        "secondary_color": "227,24,55",
+        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_washington_wizards_secondary.png"
+    }
+}

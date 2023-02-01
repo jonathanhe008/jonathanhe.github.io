@@ -1,4 +1,4 @@
-export async function fetchStats(player, stat) {
+export async function fetchStats(player, stat, team_map) {
     var stat_literal = {
         "Points": "pts",
         "Assists": "ast",
@@ -24,11 +24,10 @@ export async function fetchStats(player, stat) {
     }
     console.log(data.data);
 
-    var team_map = await fetchTeams();
     var sorted_data = data.data.sort((a, b) => {
         return new Date(b.game.date) - new Date(a.game.date);
     });
-
+    console.log(team_map);
     var table = "<table class='table'>" +
             "<thead>" +
             "<tr>" +
@@ -52,7 +51,10 @@ export async function fetchStats(player, stat) {
         if (d.min === "00" || d.min === "" || d.min === "0" || d.min === "0:00") {
             table += "<tr>" +
              "<td>" + d.game.date.substring(0,10) + "</td>" +
-             "<td>" + team_map[d.game.visitor_team_id] + " @ " + team_map[d.game.home_team_id] + "</td>" +
+             "<td> <img src=\"" + team_map[d.game.visitor_team_id].logo + "\" style=\"width: auto; height: 3vh;\"></img> " 
+             + team_map[d.game.visitor_team_id].name + 
+             " @ <img src=\"" + team_map[d.game.home_team_id].logo + "\" style=\"width: auto; height: 3vh;\"></img> " 
+             + team_map[d.game.home_team_id].name + "</td>" +
              "<td colspan=\"7\" class=\"text-center\">" + "DNP"+ "</td>" +
              "</tr>";
              continue;
@@ -66,7 +68,10 @@ export async function fetchStats(player, stat) {
 
         table += "<tr>" +
              "<td>" + d.game.date.substring(0,10) + "</td>" +
-             "<td>" + team_map[d.game.visitor_team_id] + " @ " + team_map[d.game.home_team_id] + "</td>" +
+             "<td> <img src=\"" + team_map[d.game.visitor_team_id].logo + "\" style=\"width: auto; height: 3vh;\"></img> " 
+             + team_map[d.game.visitor_team_id].name + 
+             " @ <img src=\"" + team_map[d.game.home_team_id].logo + "\" style=\"width: auto; height: 3vh;\"></img> " 
+             + team_map[d.game.home_team_id].name + "</td>" +
              "<td>" + d.min + "</td>" +
              "<td>" + d.pts + "</td>" +
              "<td>" + d.ast + "</td>" +
@@ -92,17 +97,4 @@ export async function fetchStats(player, stat) {
 
     console.log(result);
     return result;
-}
-
-export async function fetchTeams() {
-    var url = new URL("https://www.balldontlie.io/api/v1/teams");
-    let response = await fetch(url, { method: "GET" });
-    let data = await response.json();
-
-    let team_map = {};
-    for (let d of data.data) {
-        team_map[d.id] = d.full_name
-    }
-    return team_map;
-    
 }

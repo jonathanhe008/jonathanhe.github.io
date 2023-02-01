@@ -264,7 +264,7 @@ html {
 
 /* Navigation Bar */
 div.header {
-  display:table; width:100%; table-layout: fixed; background-color: beige;
+  display:table; width:100%; table-layout: fixed; 
 }
 
 div.header span {
@@ -272,7 +272,7 @@ div.header span {
 }
 
 .highlight:hover {
-  background-color: beige;
+  background-color: lightgray;
 }
 
 .highlight a {
@@ -284,7 +284,7 @@ div.header span {
 }
 
 nav {
-  background-color: beige; position: fixed; width: 100%; z-index: 999;
+  position: fixed; width: 100%; z-index: 999;
 }
 
 /* Search Bar */
