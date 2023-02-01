@@ -1,4 +1,4 @@
-export async function fetchTeams() {
+export function fetchTeams() {
     // var url = new URL("https://www.balldontlie.io/api/v1/teams");
     // let response = await fetch(url, { method: "GET" });
     // let data = await response.json();

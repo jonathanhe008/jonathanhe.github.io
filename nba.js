@@ -12,7 +12,7 @@ var team_map = null;
   const id = await fetchHeadshot(name);
   var stat = $('#stat_select').val();
   console.log(player.team.id);
-  team_map = await fetchTeams();
+  team_map = fetchTeams();
   const data = await fetchStats(player, stat, team_map);
 
   document.body.style.backgroundColor = `rgba(${team_map[player.team.id].secondary_color}, 0.3)`;
