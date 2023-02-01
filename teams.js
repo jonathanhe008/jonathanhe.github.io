@@ -9,7 +9,7 @@ export async function fetchTeams() {
     // }
     // console.log(team_map);
     // return team_map;
-
+    var team_map = null;
     fetch("./teams.json", {
         headers: {
             'Content-Type': 'application/json'
@@ -18,7 +18,10 @@ export async function fetchTeams() {
     .then(response => response.json())
     .then(teams => {
         console.log(teams);
+        team_map = teams;
         return teams;
     });
+
+    return team_map;
     
 }
