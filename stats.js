@@ -20,7 +20,7 @@ export async function fetchStats(player, stat, team_map) {
     let data = await response.json();
 
     if (data.data.length == 0) {
-        alert("Please narrow down search. Defaulting to LeGoat James :)");
+        // alert("Please narrow down search. Defaulting to LeGoat James :)");
         const img = document.querySelector("#headshot");
         img.src = `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/2544.png`;
         var url = new URL("https://www.balldontlie.io/api/v1/stats");

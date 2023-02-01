@@ -18,7 +18,7 @@ export async function fetchPlayer() {
     let data = await response.json();
 
     if (data.data.length == 0) {
-        alert("Couldn't find player!!");
+        // alert("Couldn't find player!!");
         return {
             "id": 237,
             "first_name": "LeBron",
