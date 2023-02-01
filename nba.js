@@ -12,6 +12,8 @@ var team_map = null;
   const id = await fetchHeadshot(name);
   var stat = $('#stat_select').val();
   console.log(player.team.id);
+
+  let obj;
   const res = await fetch("./teams.json")
   obj = await res.json();
   const data = await fetchStats(player, stat, obj);
