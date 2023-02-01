@@ -5,14 +5,14 @@ import { fetchTeams } from "./teams.js";
 
 var player = null;
 var chart = null;
-var team_map_all = null;
+var team_map = null;
 (async function generateChart() {
   player = await fetchPlayer();
   var name = player ? `${player['first_name']} ${player['last_name']}` : "LeBron James";
   const id = await fetchHeadshot(name);
   var stat = $('#stat_select').val();
   console.log(player.team.id);
-  const team_map = await fetchTeams();
+  fetchTeams().then(teams => team_map_all = teams);
   const data = await fetchStats(player, stat, team_map);
 
   document.body.style.backgroundColor = `rgba(${team_map[player.team.id].secondary_color}, 0.3)`;
@@ -44,14 +44,13 @@ var team_map_all = null;
       }
     }
   );
-  team_map_all = team_map;
 })();
 
 $('#stat_select').on('changed.bs.select', async function (e, clickedIndex, isSelected, previousValue) {
   var stat = $('#stat_select').val();
   console.log(stat);
   var name = player ? `${player['first_name']} ${player['last_name']}` : "LeBron James";
-  const data = await fetchStats(player, stat, team_map_all);
+  const data = await fetchStats(player, stat, team_map);
   console.log(data);
   chart.data.labels = data.map(row => row.stat);
   chart.data.datasets[0].data = data.map(row => row.count);
