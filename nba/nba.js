@@ -1,7 +1,6 @@
-import { fetchStats } from "./stats.js";
+import { fetchStats } from './stats.js'
 import { fetchPlayer } from './player.js';
 import { fetchHeadshot } from './headshot.js';
-import { fetchTeams } from "./teams.js";
 
 var player = null;
 var chart = null;
