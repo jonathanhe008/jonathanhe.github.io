@@ -445,3 +445,9 @@ input {
   vertical-align: middle;
 }
 
+@media (max-width: 767px) {
+  .img-max-size {
+    max-height: 40px;
+  }
+}
+
