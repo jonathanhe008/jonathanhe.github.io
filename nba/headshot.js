@@ -1,5 +1,5 @@
 export async function fetchHeadshot(name) {
-    fetch("./players.json", {
+    fetch("./nba/players.json", {
         headers: {
             'Content-Type': 'application/json'
         }

@@ -13,7 +13,7 @@ var team_map = null;
   console.log(player.team.id);
 
   let obj;
-  const res = await fetch("./teams.json")
+  const res = await fetch("./nba/teams.json")
   obj = await res.json();
   const data = await fetchStats(player, stat, obj);
   team_map = obj;
