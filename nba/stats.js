@@ -62,9 +62,9 @@ export async function fetchStats(player, stat, team_map) {
         if (d.min === "00" || d.min === "" || d.min === "0" || d.min === "0:00") {
             table += "<tr>" +
              "<td>" + d.game.date.substring(0,10) + "</td>" +
-             "<td> <img src=\"" + team_map[d.game.visitor_team_id].logo + "\" style=\"width: auto; height: 3vh;\"></img> " 
+             "<td> <img src=\"" + team_map[d.game.visitor_team_id].logo + "\" class=\"img-fluid img-max-size\"></img> " 
              + team_map[d.game.visitor_team_id].name + 
-             " @ <img src=\"" + team_map[d.game.home_team_id].logo + "\" style=\"width: auto; height: 3vh;\"></img> " 
+             " @ <img src=\"" + team_map[d.game.home_team_id].logo + "\" class=\"img-fluid img-max-size\"></img> " 
              + team_map[d.game.home_team_id].name + "</td>" +
              "<td colspan=\"7\" class=\"text-center\">" + "DNP"+ "</td>" +
              "</tr>";
@@ -79,9 +79,9 @@ export async function fetchStats(player, stat, team_map) {
 
         table += "<tr>" +
              "<td>" + d.game.date.substring(0,10) + "</td>" +
-             "<td> <img src=\"" + team_map[d.game.visitor_team_id].logo + "\" style=\"width: auto; height: 3vh;\"></img> " 
+             "<td> <img src=\"" + team_map[d.game.visitor_team_id].logo + "\" class=\"img-fluid img-max-size\"></img> " 
              + team_map[d.game.visitor_team_id].name + 
-             " @ <img src=\"" + team_map[d.game.home_team_id].logo + "\" style=\"width: auto; height: 3vh;\"></img> " 
+             " @ <img src=\"" + team_map[d.game.home_team_id].logo + "\" class=\"img-fluid img-max-size\"></img> " 
              + team_map[d.game.home_team_id].name + "</td>" +
              "<td>" + d.min + "</td>" +
              "<td>" + d.pts + "</td>" +

@@ -438,3 +438,10 @@ input {
   -ms-transform: translate(-100%, -50%);
   transform: translate(-100%, -50%);
 }
+
+.img-max-size {
+  max-height: 20px;
+  max-width: 5%;
+  vertical-align: middle;
+}
+
