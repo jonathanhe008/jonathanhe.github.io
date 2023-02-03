@@ -62,7 +62,7 @@ a, a:hover {
     margin: 5px;
 }
 
-.icon {
+.icn {
     border-radius: 10px; 
     width: 40px; 
     height: auto; 
@@ -85,7 +85,7 @@ html {
     background: transparent;
 }
 
-.icon:hover {
+.icn:hover {
     height: auto;
     width: 50px;
     transition: ease-in-out 0.2s;
