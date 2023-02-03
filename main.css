@@ -290,6 +290,12 @@ nav {
 
 /* Search Bar */
 
+#nba_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .ui.search input::-webkit-input-placeholder {
   color: black;
 }
@@ -303,13 +309,7 @@ nav {
   color: black;
 }
 
-/* Misc */
 
-#nba_container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 .img-max-size {
   max-height: 20px;
@@ -318,8 +318,7 @@ nav {
 }
 
 @media (max-width: 767px) {
-  .img-max-size {
-    max-height: 40px;
+  .bootstrap-select .dropdown-menu {
+    display: block;
   }
 }
-
