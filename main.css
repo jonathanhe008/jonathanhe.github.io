@@ -318,7 +318,8 @@ nav {
 }
 
 @media (max-width: 767px) {
-  .bootstrap-select .dropdown-menu {
-    display: block;
+  .img-max-size {
+    max-height: 50px;
+    max-width: 5%;
   }
 }
