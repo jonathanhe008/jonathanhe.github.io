@@ -7,7 +7,7 @@ var stat_map_global = null;
 
 (async function generatePage() {
   let player_options;
-  const players_res = await fetch("./nba/teams.json")
+  const players_res = await fetch("./nba/players.json")
   player_options = await players_res.json();
 
   let team_options;
