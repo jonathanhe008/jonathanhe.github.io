@@ -200,6 +200,7 @@ $('#stat_select').on('changed.bs.select', async function (e, clickedIndex, isSel
   const data = getSpecificStat(stat_map_global, stat);
   if (!player) {
     data.sort((a, b) => b.count - a.count);
+    chart.data.datasets[0].label = `Total ${stat}`
     chart.data.datasets[0].backgroundColor = data.map((d, i) => `rgba(${team_map[apiId_global].primary_color}, ${1 - i * (1/data.length)})`);
   }
   chart.data.labels = data.map(row => row.stat);
