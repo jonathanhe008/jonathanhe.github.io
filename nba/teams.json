@@ -10,14 +10,14 @@
         "name": "Boston Celtics",
         "primary_color": "0, 122, 51",
         "secondary_color": "139, 111, 78",
-        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_boston_celtics_secondary.png",
+        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_boston_celtics_primary.png",
         "id": 1610612738
     },
     "3":  {
         "name": "Brooklyn Nets",
         "primary_color": "0, 0, 0",
         "secondary_color": "255, 255, 255",
-        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_brooklyn_nets_secondary.png",
+        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_brooklyn_nets_primary.png",
         "id": 1610612751
     },
     "4":  {
@@ -59,7 +59,7 @@
         "name": "Detroit Pistons",
         "primary_color": "200, 16, 46",
         "secondary_color": "29,66,138",
-        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_detroit_pistons_secondary.png",
+        "logo": "https://cdn.statmuse.com/img/nba/teams/nba_detroit_pistons_primary.png",
         "id": 1610612765
     },
     "10":  {

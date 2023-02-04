@@ -94,14 +94,7 @@ async function generateTeamPage(team, id, apiId) {
   console.log(stat);
   const data = getSpecificStat(totals_map, stat);
   data.sort((a, b) => b.count - a.count)
-  var bColors = [];
-  var intervalLength = 1/data.length
-  var tran = 1;
-  for (let d of data) {
-    bColors.push(`rgba(${team_map[apiId].primary_color}, ${tran})`)
-    tran -= intervalLength
-  }
-  
+
   chart = new Chart(
     document.getElementById('nba'),
     {
@@ -112,7 +105,7 @@ async function generateTeamPage(team, id, apiId) {
           {
             label: 'Team Totals',
             data: data.map(row => row.count),
-            backgroundColor: bColors,
+            backgroundColor: data.map((d, i) => `rgba(${team_map[apiId].primary_color}, ${1 - i * (1/data.length)})`),
             hoverOffset: 4
           }
         ]
@@ -205,7 +198,8 @@ $('#stat_select').on('changed.bs.select', async function (e, clickedIndex, isSel
   console.log(stat, stat_map_global);
   const data = getSpecificStat(stat_map_global, stat);
   if (!player) {
-    data.sort((a, b) => b.count - a.count)
+    data.sort((a, b) => b.count - a.count);
+    chart.data.datasets[0].backgroundColor = data.map((d, i) => `rgba(${team_map[apiId].primary_color}, ${1 - i * (1/data.length)})`);
   }
   chart.data.labels = data.map(row => row.stat);
   chart.data.datasets[0].data = data.map(row => row.count);
