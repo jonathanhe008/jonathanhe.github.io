@@ -1,5 +1,7 @@
 import { fetchStats } from './stats.js'
 import { fetchPlayer } from './player.js';
+import { fetchSeasonAverage } from './team.js';
+
 var player = null;
 var chart = null;
 var team_map = null;
@@ -51,30 +53,77 @@ var stat_map_global = null;
     console.log(`The URL has a query parameters 'player=' with value: ${playerParam} and 'id=' with value ${idParam} and 'apiId=' with value ${apiIdParam}`);
     player = await fetchPlayer(apiIdParam);
     generatePlayerPage(idParam);
-    document.getElementById("playerBlock").style.display = "block";
+    document.getElementById("block").style.display = "block";
     
   } else if (teamParam) {
     console.log(`The URL has a query parameter 'team=' with value: ${teamParam} and 'id=' with value ${idParam} and 'apiId=' with value ${apiIdParam}`);
-    generateTeamPage(idParam)
-    document.body.style.visibility = "visible";
+    generateTeamPage(teamParam, idParam, apiIdParam)
+    document.getElementById("block").style.display = "block";
   } else {
     console.log("The URL does not have a query parameter 'player=' or 'team='");
     player = await fetchPlayer(237);
     generatePlayerPage(2544);
-    document.getElementById("playerBlock").style.display = "block";
+    document.getElementById("block").style.display = "block";
   }
 })();
 
-async function generateTeamPage(id) {
+async function generateTeamPage(team, id, apiId) {
   let player_list;
   const players_res = await fetch("./nba/players.json") //http://data.nba.net/data/10s/prod/v1/2022/players.json
   player_list = await players_res.json();
-  
+
   const player_team_dict = {};
   player_list['league']['standard'].forEach(player => {
     player_team_dict[player.teamId] = [ ...(player_team_dict[player.teamId] || []), player];
   });
   console.log("Player_team_dict => ", player_team_dict[id]);
+  const totals_map = await fetchSeasonAverage(player_team_dict[id]);
+  stat_map_global = totals_map;
+
+  const teams_res = await fetch("./nba/teams.json")
+  team_map = await teams_res.json();
+
+  const img = document.querySelector("#headshot");
+  img.src = team_map[apiId].logo;
+  document.body.style.backgroundColor = `rgba(${team_map[apiId].secondary_color}, 0.3)`;
+  document.querySelector(".btn").style.backgroundColor = `rgba(${team_map[apiId].secondary_color}, 0.1)`;
+  document.querySelector(".ui.input .prompt").style.backgroundColor = `rgba(${team_map[apiId].secondary_color}, 0.1)`;
+  document.body.style.visibility = "visible";
+
+  var stat = $('#stat_select').val();
+  console.log(stat);
+  const data = getSpecificStat(totals_map, stat);
+  data.sort((a, b) => b.count - a.count)
+  chart = new Chart(
+    document.getElementById('nba'),
+    {
+      type: 'doughnut',
+      data: {
+        labels: data.map(row => row.stat),
+        datasets: [
+          {
+            label: 'Team Totals',
+            data: data.map(row => row.count),
+            hoverOffset: 4
+          }
+        ]
+      },
+      options: {
+          plugins: {
+              title: {
+                  display: true,
+                  text: `${team} ${stat} this Season`
+              },
+              legend: {
+                display: false
+              }
+          },
+          ticks: {
+            precision:0
+          }
+      }
+    }
+  );
 }
 
 async function generatePlayerPage(id) {
@@ -144,13 +193,18 @@ function getSpecificStat(stat_map, stat) {
 
 $('#stat_select').on('changed.bs.select', async function (e, clickedIndex, isSelected, previousValue) {
   var stat = $('#stat_select').val();
-  console.log(stat, stat_map_global, player);
+  console.log(stat, stat_map_global);
   const data = getSpecificStat(stat_map_global, stat);
+  if (!player) {
+    data.sort((a, b) => b.count - a.count)
+  }
   chart.data.labels = data.map(row => row.stat);
   chart.data.datasets[0].data = data.map(row => row.count);
-  chart.options.plugins.title.text = `${player['first_name']} ${player['last_name']} ${stat} this Season`;
+
+  const words = chart.options.plugins.title.text.split(" ");
+  words[words.length - 3] = stat;
+  chart.options.plugins.title.text = words.join(" ");
 
   chart.update();
   return chart;
 });
-
