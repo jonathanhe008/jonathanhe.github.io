@@ -18,13 +18,15 @@ var stat_map_global = null;
     return {
       category: 'Player',
       title: `${player.firstName} ${player.lastName}`,
-      id: player.personId
+      id: player.personId,
+      apiId: player.apiId
     }
   });
   var team_content = Object.entries(team_options).map(([key, value]) => ({ 
     category: 'Team', 
     title: value.name,
-    id: key
+    apiId: key,
+    id: value.id
   }));
 
   $('.ui.search').search({
@@ -34,7 +36,7 @@ var stat_map_global = null;
       var currentUrl = window.location.href;
       var indexOfQueryString = currentUrl.indexOf('?');
       var baseUrl = indexOfQueryString !== -1 ? currentUrl.slice(0, indexOfQueryString) : currentUrl;
-      var newUrl = baseUrl + `?${result.category.toLowerCase()}=${result.title}&id=${result.id}`;
+      var newUrl = baseUrl + `?${result.category.toLowerCase()}=${result.title}&id=${result.id}&apiId=${result.apiId}`;
       window.location.href = newUrl;
     }
   });
@@ -43,23 +45,37 @@ var stat_map_global = null;
   const playerParam = urlParams.get("player");
   const teamParam = urlParams.get("team");
   const idParam = urlParams.get("id");
+  const apiIdParam = urlParams.get("apiId");
 
   if (playerParam) {
-    console.log(`The URL has a query parameters 'player=' with value: ${playerParam} and 'id=' with value ${idParam}`);
-    player = await fetchPlayer(playerParam);
+    console.log(`The URL has a query parameters 'player=' with value: ${playerParam} and 'id=' with value ${idParam} and 'apiId=' with value ${apiIdParam}`);
+    player = await fetchPlayer(apiIdParam);
     generatePlayerPage(idParam);
     document.getElementById("playerBlock").style.display = "block";
     
   } else if (teamParam) {
-    console.log("The URL has a query parameter 'team=' with value: " + teamParam);
+    console.log(`The URL has a query parameter 'team=' with value: ${teamParam} and 'id=' with value ${idParam} and 'apiId=' with value ${apiIdParam}`);
+    generateTeamPage(idParam)
     document.body.style.visibility = "visible";
   } else {
     console.log("The URL does not have a query parameter 'player=' or 'team='");
-    player = await fetchPlayer("LeBron James");
+    player = await fetchPlayer(237);
     generatePlayerPage(2544);
     document.getElementById("playerBlock").style.display = "block";
   }
 })();
+
+async function generateTeamPage(id) {
+  let player_list;
+  const players_res = await fetch("./nba/players.json") //http://data.nba.net/data/10s/prod/v1/2022/players.json
+  player_list = await players_res.json();
+  
+  const player_team_dict = {};
+  player_list['league']['standard'].forEach(player => {
+    player_team_dict[player.teamId] = [ ...(player_team_dict[player.teamId] || []), player];
+  });
+  console.log("Player_team_dict => ", player_team_dict[id]);
+}
 
 async function generatePlayerPage(id) {
   const teams_res = await fetch("./nba/teams.json")
