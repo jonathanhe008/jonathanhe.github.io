@@ -95,13 +95,13 @@ async function generateTeamPage(team, id, apiId) {
   const data = getSpecificStat(totals_map, stat);
   data.sort((a, b) => b.count - a.count)
   var bColors = [];
-  intervalLength = 1/data.length
-  tran = 1;
+  var intervalLength = 1/data.length
+  var tran = 1;
   for (let d of data) {
     bColors.push(`rgba(${team_map[apiId].primary_color}, ${tran})`)
-    console.log(tran)
     tran -= intervalLength
   }
+  
   chart = new Chart(
     document.getElementById('nba'),
     {
