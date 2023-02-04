@@ -58,7 +58,7 @@ a, a:hover {
 /* Other */
 .btn {
     background-color: beige; 
-    /* outline: solid;  */
+    outline: solid; 
     margin: 5px;
 }
 
