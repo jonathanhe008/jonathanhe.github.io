@@ -6,6 +6,7 @@ var player = null;
 var chart = null;
 var team_map = null;
 var stat_map_global = null;
+var apiId_global = null;
 
 (async function generatePage() {
   let player_options;
@@ -71,7 +72,7 @@ async function generateTeamPage(team, id, apiId) {
   let player_list;
   const players_res = await fetch("./nba/players.json") //http://data.nba.net/data/10s/prod/v1/2022/players.json
   player_list = await players_res.json();
-
+  
   const player_team_dict = {};
   player_list['league']['standard'].forEach(player => {
     player_team_dict[player.teamId] = [ ...(player_team_dict[player.teamId] || []), player];
@@ -79,7 +80,7 @@ async function generateTeamPage(team, id, apiId) {
   console.log("Player_team_dict => ", player_team_dict[id]);
   const totals_map = await fetchSeasonAverage(player_team_dict[id]);
   stat_map_global = totals_map;
-
+  apiId_global = apiId;
   const teams_res = await fetch("./nba/teams.json")
   team_map = await teams_res.json();
 
@@ -103,7 +104,7 @@ async function generateTeamPage(team, id, apiId) {
         labels: data.map(row => row.stat),
         datasets: [
           {
-            label: 'Team Totals',
+            label: `Total ${stat}`,
             data: data.map(row => row.count),
             backgroundColor: data.map((d, i) => `rgba(${team_map[apiId].primary_color}, ${1 - i * (1/data.length)})`),
             hoverOffset: 4
@@ -199,7 +200,7 @@ $('#stat_select').on('changed.bs.select', async function (e, clickedIndex, isSel
   const data = getSpecificStat(stat_map_global, stat);
   if (!player) {
     data.sort((a, b) => b.count - a.count);
-    chart.data.datasets[0].backgroundColor = data.map((d, i) => `rgba(${team_map[apiId].primary_color}, ${1 - i * (1/data.length)})`);
+    chart.data.datasets[0].backgroundColor = data.map((d, i) => `rgba(${team_map[apiId_global].primary_color}, ${1 - i * (1/data.length)})`);
   }
   chart.data.labels = data.map(row => row.stat);
   chart.data.datasets[0].data = data.map(row => row.count);

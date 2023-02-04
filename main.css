@@ -262,32 +262,18 @@ html {
   100% { opacity: 1; }
 }
 
-/* Navigation Bar */
+/* Header */
 
-div.header {
-  display:table; width:100%; table-layout: fixed; 
+header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
 }
 
-div.header span {
-  display:table-cell; border: none; padding: 16px 12px 12px 12px;
+header img {
+  width: 25px;
+  height: auto;
 }
-
-.highlight:hover {
-  background-color: lightgray;
-}
-
-.highlight a {
-  text-decoration: none;
-}
-
-.highlight {
-  text-align:center;
-}
-
-nav {
-  position: fixed; width: 100%; z-index: 999;
-}
-
 /* Search Bar */
 
 #nba_container {
