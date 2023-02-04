@@ -94,7 +94,7 @@ async function generateTeamPage(team, id, apiId) {
   console.log(stat);
   const data = getSpecificStat(totals_map, stat);
   data.sort((a, b) => b.count - a.count)
-  bColors = [];
+  var bColors = [];
   intervalLength = 1/data.length
   tran = 1;
   for (let d of data) {
