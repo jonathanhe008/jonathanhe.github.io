@@ -310,3 +310,16 @@ header img {
 .dropdown-toggle {
   outline: none;
 }
+
+@media (max-width: 767px) {
+  .img-max-size {
+    max-height: 30px;
+    max-width: 25%;
+  }
+  .headshot-max-size {
+    max-height: 25%;
+    max-width: 25%;
+    vertical-align: middle;
+  }
+  
+}
