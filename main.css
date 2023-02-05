@@ -295,17 +295,18 @@ header img {
   color: black;
 }
 
-
+.headshot-max-size {
+  max-height: 15%;
+  max-width: 15%;
+  vertical-align: middle;
+}
 
 .img-max-size {
-  max-height: 20px;
+  max-height: 30px;
   max-width: 5%;
   vertical-align: middle;
 }
 
-@media (max-width: 767px) {
-  .img-max-size {
-    max-height: 50px;
-    max-width: 5%;
-  }
+.dropdown-toggle {
+  outline: none;
 }
