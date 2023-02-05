@@ -49,7 +49,7 @@ export async function fetchSeasonAverage(players) {
         });
 
         table += "<tr>" +
-             "<td> <img src=\"" + `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${player['personId']}.png` + "\" class=\"img-fluid img-max-size\"></img> " 
+             "<td> <img src=\"" + `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${player['personId']}.png` + "\" class=\"img-fluid headshot-max-size\"></img> " 
              + `${player['firstName']} ${player['lastName']}` + "</td>" +
              "<td>" + totals_map['pts'][`${player['firstName']} ${player['lastName']}`] + "</td>" +
              "<td>" + totals_map['ast'][`${player['firstName']} ${player['lastName']}`] + "</td>" +
