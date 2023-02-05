@@ -328,6 +328,10 @@ header img {
     width: 100%;
     margin-top: 20px;
   }
+
+  .ui.search >.results {
+    left: 20%
+  }
 }
 
 .ui.category.search .results {
