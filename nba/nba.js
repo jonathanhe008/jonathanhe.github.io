@@ -87,11 +87,12 @@ async function generateTeamPage(team, id, apiId) {
   const img = document.querySelector("#headshot");
   img.src = team_map[apiId].logo;
   document.body.style.backgroundColor = `rgba(${team_map[apiId].secondary_color}, 0.3)`;
-  document.querySelector(".btn").style.backgroundColor = `rgba(${team_map[apiId].secondary_color}, 0.1)`;
+  // document.querySelector(".btn").style.backgroundColor = `rgba(${team_map[apiId].secondary_color}, 0.1)`;
   document.querySelector(".ui.input .prompt").style.backgroundColor = `rgba(${team_map[apiId].secondary_color}, 0.1)`;
   document.body.style.visibility = "visible";
 
-  var stat = $('#stat_select').val();
+  var activeNavLink = document.querySelector('.nav-link.active');
+  var stat = activeNavLink.dataset.value;
   console.log(stat);
   const data = getSpecificStat(totals_map, stat);
   data.sort((a, b) => b.count - a.count)
@@ -139,11 +140,12 @@ async function generatePlayerPage(id) {
   const img = document.querySelector("#headshot");
   img.src = `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${id}.png`;
   document.body.style.backgroundColor = `rgba(${team_map[player.team.id].secondary_color}, 0.3)`;
-  document.querySelector(".btn").style.backgroundColor = `rgba(${team_map[player.team.id].secondary_color}, 0.1)`;
+  // document.querySelector(".btn").style.backgroundColor = `rgba(${team_map[player.team.id].secondary_color}, 0.1)`;
   document.querySelector(".ui.input .prompt").style.backgroundColor = `rgba(${team_map[player.team.id].secondary_color}, 0.1)`;
   document.body.style.visibility = "visible";
 
-  var stat = $('#stat_select').val();
+  var activeNavLink = document.querySelector('.nav-link.active');
+  var stat = activeNavLink.dataset.value;
   const data = getSpecificStat(stat_map, stat);
   chart = new Chart(
     document.getElementById('nba'),
@@ -194,8 +196,15 @@ function getSpecificStat(stat_map, stat) {
   return result;
 }
 
-$('#stat_select').on('changed.bs.select', async function (e, clickedIndex, isSelected, previousValue) {
-  var stat = $('#stat_select').val();
+window.statChange = function statChange(element) {
+  if (element.classList.contains("active")) {
+    return;
+  }
+  var activeNavLink = document.querySelector('.nav-link.active');
+  activeNavLink.classList.remove('active');
+  element.classList.add('active');
+
+  var stat = element.dataset.value;
   console.log(stat, stat_map_global);
   const data = getSpecificStat(stat_map_global, stat);
   if (!player) {
@@ -212,4 +221,4 @@ $('#stat_select').on('changed.bs.select', async function (e, clickedIndex, isSel
 
   chart.update();
   return chart;
-});
+}
