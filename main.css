@@ -336,6 +336,10 @@ header img {
   outline: none;
 }
 
+.nav-link {
+  color: black;
+}
+
 @media (max-width: 767px) {
   .img-max-size {
     max-height: 30px;
