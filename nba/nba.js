@@ -87,14 +87,10 @@ async function generateTeamPage(team, id, apiId) {
   const img = document.querySelector("#headshot");
   img.src = team_map[apiId].logo;
   document.body.style.backgroundColor = `rgba(${team_map[apiId].secondary_color}, 0.3)`;
-  var css = `.nav-link:hover{ color: rgba(${team_map[apiId].primary_color}, 0.8) }`;
-  var style = document.createElement('style');
-  if (style.styleSheet) {
-      style.styleSheet.cssText = css;
-  } else {
-      style.appendChild(document.createTextNode(css));
-  }
-  document.getElementsByTagName('head')[0].appendChild(style);
+  const css = `.nav-link:hover { color: rgba(${team_map[apiId].primary_color}, 0.8) }`;
+  const style = document.createElement('style');
+  style.innerHTML = css;
+  document.head.appendChild(style);
   document.querySelector(".ui.input .prompt").style.backgroundColor = `rgba(${team_map[apiId].secondary_color}, 0.1)`;
   document.body.style.visibility = "visible";
 
@@ -147,14 +143,10 @@ async function generatePlayerPage(id) {
   const img = document.querySelector("#headshot");
   img.src = `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${id}.png`;
   document.body.style.backgroundColor = `rgba(${team_map[player.team.id].secondary_color}, 0.3)`;
-  var css = `.nav-link:hover{ color: rgba(${team_map[player.team.id].primary_color}, 0.8) }`;
-  var style = document.createElement('style');
-  if (style.styleSheet) {
-      style.styleSheet.cssText = css;
-  } else {
-      style.appendChild(document.createTextNode(css));
-  }
-  document.getElementsByTagName('head')[0].appendChild(style);
+  const css = `.nav-link:hover { color: rgba(${team_map[player.team.id].primary_color}, 0.8) }`;
+  const style = document.createElement('style');
+  style.innerHTML = css;
+  document.head.appendChild(style);
   document.querySelector(".ui.input .prompt").style.backgroundColor = `rgba(${team_map[player.team.id].secondary_color}, 0.1)`;
   document.body.style.visibility = "visible";
 
