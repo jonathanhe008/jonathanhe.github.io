@@ -54,17 +54,13 @@ var apiId_global = null;
     console.log(`The URL has a query parameters 'player=' with value: ${playerParam} and 'id=' with value ${idParam} and 'apiId=' with value ${apiIdParam}`);
     player = await fetchPlayer(apiIdParam);
     generatePlayerPage(idParam);
-    document.getElementById("block").style.display = "block";
-    
   } else if (teamParam) {
     console.log(`The URL has a query parameter 'team=' with value: ${teamParam} and 'id=' with value ${idParam} and 'apiId=' with value ${apiIdParam}`);
     generateTeamPage(teamParam, idParam, apiIdParam)
-    document.getElementById("block").style.display = "block";
   } else {
     console.log("The URL does not have a query parameter 'player=' or 'team='");
     player = await fetchPlayer(237);
     generatePlayerPage(2544);
-    document.getElementById("block").style.display = "block";
   }
 })();
 
@@ -87,12 +83,14 @@ async function generateTeamPage(team, id, apiId) {
   const img = document.querySelector("#headshot");
   img.src = team_map[apiId].logo;
   document.body.style.backgroundColor = `rgba(${team_map[apiId].secondary_color}, 0.3)`;
-  const css = `.nav > li > a:focus, .nav > li > a:hover{ background-color: rgba(${team_map[apiId].primary_color}, 1) }`;
+  var css = `.nav > li > a:focus, .nav > li > a:hover{ background-color: rgba(${team_map[apiId].primary_color}, 1) }
+  .nav-pills .nav-link.active, .nav-pills .show > .nav-link{ background-color: rgba(${team_map[apiId].primary_color}, 1) }`;
   const style = document.createElement('style');
   style.innerHTML = css;
   document.head.appendChild(style);
   document.querySelector(".ui.input .prompt").style.backgroundColor = `rgba(${team_map[apiId].secondary_color}, 0.1)`;
   document.body.style.visibility = "visible";
+  document.getElementById("block").style.display = "block";
 
   var activeNavLink = document.querySelector('.nav-link.active');
   var stat = activeNavLink.dataset.value;
@@ -143,12 +141,14 @@ async function generatePlayerPage(id) {
   const img = document.querySelector("#headshot");
   img.src = `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${id}.png`;
   document.body.style.backgroundColor = `rgba(${team_map[player.team.id].secondary_color}, 0.3)`;
-  const css = `.nav > li > a:focus, .nav > li > a:hover{ background-color: rgba(${team_map[player.team.id].primary_color}, 1) }`;
+  var css = `.nav > li > a:focus, .nav > li > a:hover{ background-color: rgba(${team_map[player.team.id].primary_color}, 1) }
+  .nav-pills .nav-link.active, .nav-pills .show > .nav-link{ background-color: rgba(${team_map[player.team.id].primary_color}, 1) }`;
   const style = document.createElement('style');
   style.innerHTML = css;
   document.head.appendChild(style);
   document.querySelector(".ui.input .prompt").style.backgroundColor = `rgba(${team_map[player.team.id].secondary_color}, 0.1)`;
   document.body.style.visibility = "visible";
+  document.getElementById("block").style.display = "block";
 
   var activeNavLink = document.querySelector('.nav-link.active');
   var stat = activeNavLink.dataset.value;
@@ -172,9 +172,6 @@ async function generatePlayerPage(id) {
               title: {
                   display: true,
                   text: `${player['first_name']} ${player['last_name']} ${stat} this Season`
-              },
-              legend: {
-                display: false
               }
           },
           ticks: {
