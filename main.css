@@ -56,6 +56,11 @@ a, a:hover {
 }
 
 /* Other */
+
+.btn:hover {
+  color: beige;
+}
+
 .icn {
     border-radius: 10px; 
     width: 40px; 
