@@ -51,7 +51,8 @@ export async function fetchStats(player, team_map) {
         "reb": {},
         "blk": {},
         "stl": {},
-        "turnover": {}
+        "turnover": {},
+        "min": {}
     };
 
     for (let d of sorted_data) {
@@ -66,9 +67,15 @@ export async function fetchStats(player, team_map) {
              "</tr>";
              continue;
         }
-        var stats = ["pts", "ast", "reb", "blk", "stl", "turnover"];
+        var stats = ["pts", "ast", "reb", "blk", "stl", "turnover", "min"];
+        const minutes = parseInt(d["min"], 10);
         stats.forEach(function(stat) {
-            stat_map[stat][d[stat]] = (stat_map[stat][d[stat]] || 0) + 1;
+            if (stat == "min") {
+                stat_map[stat][minutes] = (stat_map[stat][minutes] || 0) + 1;
+            }
+            else {
+                stat_map[stat][d[stat]] = (stat_map[stat][d[stat]] || 0) + 1;
+            }
         });
 
         table += "<tr>" +
@@ -77,7 +84,7 @@ export async function fetchStats(player, team_map) {
              + team_map[d.game.visitor_team_id].name + 
              " @ <img src=\"" + team_map[d.game.home_team_id].logo + "\" class=\"img-fluid img-max-size\"></img> " 
              + team_map[d.game.home_team_id].name + "</td>" +
-             "<td>" + d.min + "</td>" +
+             "<td>" + minutes + "</td>" +
              "<td>" + d.pts + "</td>" +
              "<td>" + d.ast + "</td>" +
              "<td>" + d.reb + "</td>" +

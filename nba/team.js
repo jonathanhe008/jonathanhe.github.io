@@ -5,7 +5,8 @@ export async function fetchSeasonAverage(players) {
         "reb": {},
         "blk": {},
         "stl": {},
-        "turnover": {}
+        "turnover": {},
+        "min": {}
     };
 
     const playerIds = players.map(player => player['apiId']);
@@ -19,6 +20,7 @@ export async function fetchSeasonAverage(players) {
     let data = await response.json();
 
     console.log("fetchSeasonAverage => ", data);
+    data.data.sort((a, b) => b.pts - a.pts)
 
     const player_dict = players.reduce((acc, obj) => {
         acc[obj.apiId] = obj;
@@ -37,15 +39,22 @@ export async function fetchSeasonAverage(players) {
             "<th>Stl</th>" +
             "<th>Blk</th>" +
             "<th>Tov</th>" +
+            "<th>Min</th>" +
             "</tr>" +
             "</thead>" +
             "<tbody>";
 
     for (let averages of data.data) {
         let player = player_dict[averages['player_id']];
-        var stats = ["pts", "ast", "reb", "blk", "stl", "turnover"];
+        var stats = ["pts", "ast", "reb", "blk", "stl", "turnover", "min"];
         stats.forEach(function(stat) {
-            totals_map[stat][`${player['firstName']} ${player['lastName']}`] = Math.ceil(averages[stat] * averages['games_played']);
+            if (stat == "min") {
+                const parts = averages[stat].split(":");
+                const minutes = parseInt(parts[0]) * 60 + parseInt(parts[1]);
+                totals_map[stat][`${player['firstName']} ${player['lastName']}`] = Math.ceil(minutes * averages['games_played']);
+            } else {
+                totals_map[stat][`${player['firstName']} ${player['lastName']}`] = Math.ceil(averages[stat] * averages['games_played']);
+            }
         });
 
         table += "<tr>" +
@@ -57,6 +66,7 @@ export async function fetchSeasonAverage(players) {
              "<td>" + totals_map['stl'][`${player['firstName']} ${player['lastName']}`] + "</td>" +
              "<td>" + totals_map['blk'][`${player['firstName']} ${player['lastName']}`] + "</td>" +
              "<td>" + totals_map['turnover'][`${player['firstName']} ${player['lastName']}`]+ "</td>" +
+             "<td>" + totals_map['min'][`${player['firstName']} ${player['lastName']}`] + "</td>" +
              "</tr>";
     }
 

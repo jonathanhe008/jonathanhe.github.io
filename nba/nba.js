@@ -172,11 +172,28 @@ async function generatePlayerPage(id) {
               title: {
                   display: true,
                   text: `${player['first_name']} ${player['last_name']} ${stat} this Season`
+              },
+              legend: {
+                display: false
               }
           },
           ticks: {
             precision:0
-          }
+          },
+          scales: {
+            y: {
+              title: {
+                display: true,
+                text: 'Frequency'
+              }
+            },
+            x: {
+              title: {
+                display: true,
+                text: `${stat}`
+              }
+            }
+          }     
       }
     }
   );
@@ -190,6 +207,7 @@ function getSpecificStat(stat_map, stat) {
     "Blocks": "blk",
     "Steals": "stl",
     "Turnovers": "turnover",
+    "Minutes": "min"
   };
   let result = [];
   for (const [key, value] of Object.entries(stat_map[stat_literal[stat]])) {
@@ -217,7 +235,10 @@ window.statChange = function statChange(element) {
     data.sort((a, b) => b.count - a.count);
     chart.data.datasets[0].label = `Total ${stat}`
     chart.data.datasets[0].backgroundColor = data.map((d, i) => `rgba(${team_map[apiId_global].primary_color}, ${1 - i * (1/data.length)})`);
+  } else {
+    chart.options.scales.x.title.text = `${stat}`;
   }
+
   chart.data.labels = data.map(row => row.stat);
   chart.data.datasets[0].data = data.map(row => row.count);
 
