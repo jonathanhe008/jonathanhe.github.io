@@ -340,6 +340,10 @@ header img {
   color: black;
 }
 
+.nav-link:hover {
+  color: white;
+}
+
 @media (max-width: 767px) {
   .img-max-size {
     max-height: 30px;

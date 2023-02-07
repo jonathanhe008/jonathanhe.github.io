@@ -87,7 +87,7 @@ async function generateTeamPage(team, id, apiId) {
   const img = document.querySelector("#headshot");
   img.src = team_map[apiId].logo;
   document.body.style.backgroundColor = `rgba(${team_map[apiId].secondary_color}, 0.3)`;
-  const css = `.nav-link:hover { color: rgba(${team_map[apiId].primary_color}, 0.8) }`;
+  const css = `.nav > li > a:focus, .nav > li > a:hover{ background-color: rgba(${team_map[apiId].primary_color}, 1) }`;
   const style = document.createElement('style');
   style.innerHTML = css;
   document.head.appendChild(style);
@@ -143,7 +143,7 @@ async function generatePlayerPage(id) {
   const img = document.querySelector("#headshot");
   img.src = `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${id}.png`;
   document.body.style.backgroundColor = `rgba(${team_map[player.team.id].secondary_color}, 0.3)`;
-  const css = `.nav-link:hover { color: rgba(${team_map[player.team.id].primary_color}, 0.8) }`;
+  const css = `.nav > li > a:focus, .nav > li > a:hover{ background-color: rgba(${team_map[player.team.id].primary_color}, 1) }`;
   const style = document.createElement('style');
   style.innerHTML = css;
   document.head.appendChild(style);
