@@ -66,7 +66,7 @@ export async function fetchSeasonAverage(players) {
              "<td>" + totals_map['stl'][`${player['firstName']} ${player['lastName']}`] + "</td>" +
              "<td>" + totals_map['blk'][`${player['firstName']} ${player['lastName']}`] + "</td>" +
              "<td>" + totals_map['turnover'][`${player['firstName']} ${player['lastName']}`]+ "</td>" +
-             "<td>" + totals_map['min'][`${player['firstName']} ${player['lastName']}`] + "</td>" +
+             "<td>" + new Intl.NumberFormat().format(totals_map['min'][`${player['firstName']} ${player['lastName']}`]) + "</td>" +
              "</tr>";
     }
 
