@@ -367,5 +367,7 @@ header img {
   .ui.search >.results {
     left: 20%
   }
-  
+  #snippet {
+    margin-top: 5%;
+  }
 }
