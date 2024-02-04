@@ -12,7 +12,7 @@ export async function fetchSeasonAverage(players) {
     const playerIds = players.map(player => player['apiId']);
     var url = new URL("https://www.balldontlie.io/api/v1/season_averages");
     var params = {
-        'season': '2023', 
+        'season': '2022', 
         'player_ids[]': playerIds,
     };
     url.search = new URLSearchParams(params).toString();

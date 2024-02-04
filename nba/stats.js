@@ -2,7 +2,7 @@ export async function fetchStats(player, team_map) {
     var player_id = player ? player['id'] : 237;
     var url = new URL("https://www.balldontlie.io/api/v1/stats");
     var params = {
-        'seasons[]': ['2023'], 
+        'seasons[]': ['2022'], 
         'player_ids[]': [player_id],
         'per_page': 100
     };
@@ -16,7 +16,7 @@ export async function fetchStats(player, team_map) {
         img.src = `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/2544.png`;
         var url = new URL("https://www.balldontlie.io/api/v1/stats");
         var params = {
-            'seasons[]': ['2023'], 
+            'seasons[]': ['2022'], 
             'player_ids[]': [237],
             'per_page': 100
         };
